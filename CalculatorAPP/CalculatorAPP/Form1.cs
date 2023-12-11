@@ -143,23 +143,11 @@ namespace CalculatorAPP
 
         }
 
-        double num1, num2, result;
-        char operation;
-        bool isDecimal = false;
+        double num1;
+        double result = 0;
+        string operation = "";
+        bool isOperationPerformed = false; 
 
-        //private void changeLabel(int numberPressed)
-        //{
-        //    if(isDecimal == true) 
-        //    {  
-
-        //    }
-        //    else
-        //    {
-        //        if(lblPreviousInput)
-
-        //    }
-
-        //}
 
         private double num1Value(double num1) { 
         
@@ -185,143 +173,129 @@ namespace CalculatorAPP
             }
         }
 
-        private void buttonInput(int numPressed)
+       
+
+        private void numberButtonClick(object sender, EventArgs e)
         {
-            if (isDecimal == true)
+            if(isOperationPerformed) inputBox.Clear();
+
+          Button noButton = (Button)sender;
+            inputBox.Text = inputBox.Text + noButton.Text;
+            isOperationPerformed = false;
+        }
+      
+        private void operator_click(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;
+
+            if (result != 0)
             {
+                buttonEquals.PerformClick(); 
+                operation = button.Text;
+                lblPreviousInput.Text = result + " " + operation;
+                isOperationPerformed = true;
+            
+             } 
+          
+                      
+            else {
+                operation = button.Text;
+                result = double.Parse(inputBox.Text);
+                lblPreviousInput.Text = result + " " + operation;
+                isOperationPerformed = true;
 
-                int decimalCount = 0; 
-                foreach(char c in inputBox.Text)
-                {
-                    if(c == '.') decimalCount++;
-                }
-                if (decimalCount < 1) {
-
-                    inputBox.Text = inputBox.Text + "."; 
-                }
-                isDecimal = false;
-
-            } else
-            {
-                if (inputBox.Text.Equals(0) == true && inputBox.Text != null ) 
-                {
-                    inputBox.Text = numPressed.ToString();
-                }
-                else if(inputBox.Text.Equals("-0") == true)
-                {
-                    inputBox.Text = "-" + numPressed.ToString();
-                } else
-                {
-                    inputBox.Text = inputBox.Text + numPressed.ToString();
-                }
             }
+           
+           
         }
 
-        private void buttonAdd_Click(object sender, EventArgs e)
+       
+        private void buttonPosNeg_Click(object sender, EventArgs e)
         {
             double.TryParse(inputBox.Text, out num1);
-            lblPreviousInput.Text = num1.ToString();
-            inputBox.Clear();
-            double.TryParse(inputBox.Text, out num2);
-            result += num1 + num2;
-            lblPreviousInput.Text = result.ToString() + " + ";
-            inputBox.Clear() ;
-           
+
+        if(num1 > 1)
+            {
+               result = num1 * -1; 
+                inputBox.Text = result.ToString();
+            }
+        else
+            {
+                result = num1 * -1;
+                inputBox.Text = result.ToString();
+            }
             
         }
 
-        private void buttonSubtract_Click(object sender, EventArgs e)
-        {
-            double.TryParse(inputBox.Text, out num1);
-            lblPreviousInput.Text = num1.ToString();
-            inputBox.Clear();
-            double.TryParse(inputBox.Text, out num2);
-            result = num1 - num2;
-            lblPreviousInput.Text = result.ToString() + " - ";
-            inputBox.Clear();
-        }
-
-        private void button0_Click(object sender, EventArgs e)
-        {
-            buttonInput(0); 
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            buttonInput(1);
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            buttonInput(2);
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            buttonInput(3);
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            buttonInput(4);
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-            buttonInput(5);
-        }
-
-        private void button6_Click(object sender, EventArgs e)
-        {
-            buttonInput(6);
-        }
-
-        private void button7_Click(object sender, EventArgs e)
-        {
-            buttonInput(7);
-        }
-
-        private void button8_Click(object sender, EventArgs e)
-        {
-            buttonInput(8);
-        }
-
-        private void button9_Click(object sender, EventArgs e)
-        {
-            buttonInput(9);
-        }
-
-        private void buttonDecimal_Click(object sender, EventArgs e)
-        {
-            isDecimal = true;
-            buttonInput(0);
-        }
 
         private void buttonClear_Click(object sender, EventArgs e)
         {
-            isDecimal = false;
-            inputBox.Clear();
-
+           
             lblPreviousInput.Text = "Input cleared";
+            inputBox.Clear();
             num1 = 0;
-            num2 = 0;
-        }
-
-        void set1Paramater(string text)
-        {
-            if (text.Trim() != "")
-            {
-                isDecimal = true;
-                num1 = Convert.ToDouble(text);
-            }
-            else
-            {
-                isDecimal = false;
-            }
-
+            result = 0;
         }
 
       
 
+        private void buttonClearEntered_Click(object sender, EventArgs e)
+        {
+            inputBox.Text = null;
+        }
+
+        private void buttonEquals_Click(object sender, EventArgs e)
+        {
+            switch(operation)
+            {
+                case "+":
+                    inputBox.Text = (result + double.Parse(inputBox.Text)).ToString();
+                    break;
+                case "-":
+                    inputBox.Text = (result - double.Parse(inputBox.Text)).ToString();
+                   
+                  
+                    break;
+                case "*":
+                    inputBox.Text = (result * double.Parse(inputBox.Text)).ToString();
+                   
+                   
+                    break;
+                case "÷":
+                    inputBox.Text = (result / double.Parse(inputBox.Text)).ToString();
+                 
+                    break;
+               
+                default:
+                    break; 
+            }
+
+            result = Double.Parse(inputBox.Text);
+            if(inputBox == null)
+            {
+                MessageBox.Show("Enter input");
+            }
+            lblPreviousInput.Text = ""; 
+           
+        }
+
+        private void buttonSquared_Click(object sender, EventArgs e)
+        {
+            num1 = double.Parse(inputBox.Text); 
+            result = num1 * num1;
+            lblPreviousInput.Text = result.ToString();
+            inputBox.Text = result.ToString();
+ 
+        }
+
+        private void buttonSquareRoot_Click(object sender, EventArgs e)
+        {
+            num1 = double.Parse(inputBox.Text);
+            result = Math.Sqrt(num1);
+            lblPreviousInput.Text = result.ToString();
+            inputBox.Text = result.ToString();
+        }
     }
+           
+
 }
