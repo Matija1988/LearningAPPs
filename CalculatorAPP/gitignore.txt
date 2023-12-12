@@ -1,3 +1,0 @@
-.vs
-CalculatorAPP/bin
-CalculatorAPP/obj
