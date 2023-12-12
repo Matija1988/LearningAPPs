@@ -54,6 +54,7 @@
             this.buttonEquals = new System.Windows.Forms.Button();
             this.buttonSubtract = new System.Windows.Forms.Button();
             this.buttonAdd = new System.Windows.Forms.Button();
+            this.richTextHistory = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
             // button1
@@ -365,6 +366,7 @@
             this.buttonModulus.TabIndex = 17;
             this.buttonModulus.Text = "%";
             this.buttonModulus.UseVisualStyleBackColor = false;
+            this.buttonModulus.Click += new System.EventHandler(this.operator_click);
             // 
             // buttonBackspace
             // 
@@ -462,12 +464,26 @@
             this.buttonAdd.UseVisualStyleBackColor = false;
             this.buttonAdd.Click += new System.EventHandler(this.operator_click);
             // 
+            // richTextHistory
+            // 
+            this.richTextHistory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(20)))), ((int)(((byte)(44)))));
+            this.richTextHistory.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextHistory.Font = new System.Drawing.Font("SDGlitchRobotDemo", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextHistory.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(69)))), ((int)(((byte)(64)))));
+            this.richTextHistory.Location = new System.Drawing.Point(378, 144);
+            this.richTextHistory.Name = "richTextHistory";
+            this.richTextHistory.ReadOnly = true;
+            this.richTextHistory.Size = new System.Drawing.Size(249, 456);
+            this.richTextHistory.TabIndex = 25;
+            this.richTextHistory.Text = "";
+            // 
             // Calculator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(20)))), ((int)(((byte)(44)))));
-            this.ClientSize = new System.Drawing.Size(344, 612);
+            this.ClientSize = new System.Drawing.Size(639, 612);
+            this.Controls.Add(this.richTextHistory);
             this.Controls.Add(this.buttonEquals);
             this.Controls.Add(this.buttonSubtract);
             this.Controls.Add(this.buttonAdd);
@@ -532,6 +548,7 @@
         private System.Windows.Forms.Button buttonEquals;
         private System.Windows.Forms.Button buttonSubtract;
         private System.Windows.Forms.Button buttonAdd;
+        private System.Windows.Forms.RichTextBox richTextHistory;
     }
 }
 

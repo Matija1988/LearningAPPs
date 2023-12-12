@@ -44,13 +44,17 @@ namespace CalculatorAPP
         private Rectangle btnSubtract;
         private Rectangle btnEquals;
 
+        private Rectangle rtbHistory;
+
         private Size originalFormSize;
+
 
         public Calculator()
         {
             InitializeComponent();
         }
 
+        // define location, width and height of a rectangle that represents a number
         private void Calculator_Load(object sender, EventArgs e)
         {
             originalFormSize = this.Size;
@@ -84,13 +88,18 @@ namespace CalculatorAPP
             btnSubtract = new Rectangle(buttonSubtract.Location.X, buttonSubtract.Location.Y, buttonSubtract.Width, buttonSubtract.Height);
             btnEquals = new Rectangle(buttonEquals.Location.X, buttonEquals.Location.Y, buttonEquals.Width, buttonEquals.Height);
 
+            rtbHistory = new Rectangle(richTextHistory.Location.X, richTextHistory.Location.Y, richTextHistory.Width, richTextHistory.Height);
+
             boxForInput = new Rectangle(inputBox.Location.X, inputBox.Location.Y, inputBox.Width, inputBox.Height);
             labelForPreviousInput = new Rectangle(lblPreviousInput.Location.X, lblPreviousInput.Location.Y, lblPreviousInput.Width, lblPreviousInput.Height);
 
         }
 
+
+        // new location and size in case of resize        
         private void resizeControl(Rectangle originalControlRectangle, Control control)
         {
+            
             float xAxis = (float)(this.Width) / (float)(originalFormSize.Width);
             float yAxis = (float)(this.Height) / (float)(originalFormSize.Height);
 
@@ -106,6 +115,8 @@ namespace CalculatorAPP
 
         }
 
+
+        // pass new values from rectangles to buttons - this makes the resizing work
         private void Calculator_Resize(object sender, EventArgs e)
         {
             resizeControl(btn1, button1);
@@ -137,6 +148,8 @@ namespace CalculatorAPP
             resizeControl(btnSubtract, buttonSubtract);
             resizeControl(btnEquals, buttonEquals);
 
+            resizeControl(rtbHistory, richTextHistory);
+
             resizeControl(boxForInput, inputBox);
             resizeControl(labelForPreviousInput, lblPreviousInput);
 
@@ -147,9 +160,10 @@ namespace CalculatorAPP
         double result = 0;
         string operation = "";
         bool isOperationPerformed = false; 
+        string firstNumber, secondNumber;
 
 
-
+        // Prevent non number input, limit - to 1, limit . to 1
         private void inputBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.') && (e.KeyChar != '-'))
@@ -172,6 +186,7 @@ namespace CalculatorAPP
         {
             if(isOperationPerformed) inputBox.Clear();
 
+            // button value is button text 
           Button noButton = (Button)sender;
             inputBox.Text = inputBox.Text + noButton.Text;
             isOperationPerformed = false;
@@ -179,8 +194,9 @@ namespace CalculatorAPP
       
         private void operator_click(object sender, EventArgs e)
         {
-            Button button = (Button)sender;
 
+            Button button = (Button)sender;
+            // button text is operation 
             if (result != 0)
             {
                 buttonEquals.PerformClick(); 
@@ -188,8 +204,7 @@ namespace CalculatorAPP
                 lblPreviousInput.Text = result + " " + operation;
                 isOperationPerformed = true;
             
-             } 
-          
+             }          
                       
             else {
                 operation = button.Text;
@@ -198,8 +213,9 @@ namespace CalculatorAPP
                 isOperationPerformed = true;
 
             }
-           
-           
+
+            firstNumber = inputBox.Text;
+
         }
 
        
@@ -228,6 +244,7 @@ namespace CalculatorAPP
             inputBox.Clear();
             num1 = 0;
             result = 0;
+            richTextHistory.Clear();
         }
 
       
@@ -239,6 +256,9 @@ namespace CalculatorAPP
 
         private void buttonEquals_Click(object sender, EventArgs e)
         {
+        
+            secondNumber = inputBox.Text;   
+
             switch(operation)
             {
                 case "+":
@@ -258,6 +278,9 @@ namespace CalculatorAPP
                     inputBox.Text = (result / double.Parse(inputBox.Text)).ToString();
                  
                     break;
+                case "%":
+                    inputBox.Text = (result / double.Parse(inputBox.Text) * 100).ToString(); 
+                    break;
                
                 default:
                     break; 
@@ -265,8 +288,11 @@ namespace CalculatorAPP
 
             result = Double.Parse(inputBox.Text);
           
-            lblPreviousInput.Text = ""; 
-           
+            lblPreviousInput.Text = "";
+            
+            
+            richTextHistory.AppendText(firstNumber + "  " + operation +  "  " + secondNumber + "\n");
+            richTextHistory.AppendText("\n\t" + inputBox.Text + "\n\n");
         }
 
         private void buttonSquared_Click(object sender, EventArgs e)
