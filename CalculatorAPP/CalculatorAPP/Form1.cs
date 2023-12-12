@@ -149,13 +149,6 @@ namespace CalculatorAPP
         bool isOperationPerformed = false; 
 
 
-        private double num1Value(double num1) { 
-        
-            double.TryParse(inputBox.Text, out num1);
-            lblPreviousInput.Text = num1.ToString();
-            return num1;
-        }
-
 
         private void inputBox_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -271,10 +264,7 @@ namespace CalculatorAPP
             }
 
             result = Double.Parse(inputBox.Text);
-            if(inputBox == null)
-            {
-                MessageBox.Show("Enter input");
-            }
+          
             lblPreviousInput.Text = ""; 
            
         }
@@ -294,6 +284,16 @@ namespace CalculatorAPP
             result = Math.Sqrt(num1);
             lblPreviousInput.Text = result.ToString();
             inputBox.Text = result.ToString();
+        }
+
+        private void buttonBackspace_Click(object sender, EventArgs e)
+        {
+            if(inputBox.Text.Length > 0)
+            {
+                inputBox.Text = inputBox.Text.Remove(inputBox.Text.Length - 1, 1);
+            }
+
+
         }
     }
            

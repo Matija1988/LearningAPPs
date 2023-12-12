@@ -380,6 +380,7 @@
             this.buttonBackspace.TabIndex = 20;
             this.buttonBackspace.Text = "<=";
             this.buttonBackspace.UseVisualStyleBackColor = false;
+            this.buttonBackspace.Click += new System.EventHandler(this.buttonBackspace_Click);
             // 
             // buttonDivide
             // 
