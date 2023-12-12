@@ -178,9 +178,22 @@ namespace CalculatorAPP
             {
                 e.Handled = true;
             }
+
+
+          
         }
 
-       
+        private void KeyPressEvent(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar >= '0' && e.KeyChar <= '9')
+            {
+                inputBox.Text += e.KeyChar;
+                e.Handled = true;
+            }
+                       
+        }
+
+            
 
         private void numberButtonClick(object sender, EventArgs e)
         {
@@ -257,10 +270,12 @@ namespace CalculatorAPP
         private void buttonEquals_Click(object sender, EventArgs e)
         {
         
-            secondNumber = inputBox.Text;   
+            secondNumber = inputBox.Text;
 
-            switch(operation)
-            {
+            
+
+            switch (operation)
+            { 
                 case "+":
                     inputBox.Text = (result + double.Parse(inputBox.Text)).ToString();
                     break;
@@ -311,6 +326,8 @@ namespace CalculatorAPP
             lblPreviousInput.Text = result.ToString();
             inputBox.Text = result.ToString();
         }
+
+
 
         private void buttonBackspace_Click(object sender, EventArgs e)
         {
