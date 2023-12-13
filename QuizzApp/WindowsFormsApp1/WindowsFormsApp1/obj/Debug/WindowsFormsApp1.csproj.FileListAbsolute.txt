@@ -1,0 +1,11 @@
+C:\GitRepo\LearningAPPs\QuizzApp\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
+C:\GitRepo\LearningAPPs\QuizzApp\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
+C:\GitRepo\LearningAPPs\QuizzApp\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
+C:\GitRepo\LearningAPPs\QuizzApp\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.AssemblyReference.cache
+C:\GitRepo\LearningAPPs\QuizzApp\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.FormLogin.resources
+C:\GitRepo\LearningAPPs\QuizzApp\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+C:\GitRepo\LearningAPPs\QuizzApp\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.cache
+C:\GitRepo\LearningAPPs\QuizzApp\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
+C:\GitRepo\LearningAPPs\QuizzApp\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
+C:\GitRepo\LearningAPPs\QuizzApp\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
+C:\GitRepo\LearningAPPs\QuizzApp\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.FormRegister.resources

@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApp1
 {
-    partial class LogInForm
+    partial class FormRegister
     {
         /// <summary>
         /// Required designer variable.
@@ -102,9 +102,9 @@
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(251)))), ((int)(((byte)(242)))));
             this.label3.Location = new System.Drawing.Point(43, 317);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(160, 20);
+            this.label3.Size = new System.Drawing.Size(55, 20);
             this.label3.TabIndex = 6;
-            this.label3.Text = "Confirm Password";
+            this.label3.Text = "Email";
             // 
             // textBoxConfirmPassword
             // 
@@ -178,7 +178,7 @@
             this.label5.TabIndex = 11;
             this.label5.Text = "Back to LOGIN";
             // 
-            // LogInForm
+            // FormRegister
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -197,9 +197,10 @@
             this.Controls.Add(this.textBoxPassword);
             this.Controls.Add(this.textBoxUserName);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "LogInForm";
+            this.MinimumSize = new System.Drawing.Size(373, 747);
+            this.Name = "FormRegister";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FormUserLogIn";
+            this.Text = "FormUserRegister";
             this.ResumeLayout(false);
             this.PerformLayout();
 
