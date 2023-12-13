@@ -55,6 +55,7 @@
             this.buttonSubtract = new System.Windows.Forms.Button();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.richTextHistory = new System.Windows.Forms.RichTextBox();
+            this.richTextFunny = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
             // button1
@@ -487,12 +488,26 @@
             this.richTextHistory.TabIndex = 25;
             this.richTextHistory.Text = "";
             // 
+            // richTextFunny
+            // 
+            this.richTextFunny.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(20)))), ((int)(((byte)(44)))));
+            this.richTextFunny.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextFunny.Font = new System.Drawing.Font("Franklin Gothic Medium Cond", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextFunny.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(69)))), ((int)(((byte)(64)))));
+            this.richTextFunny.Location = new System.Drawing.Point(378, 20);
+            this.richTextFunny.Name = "richTextFunny";
+            this.richTextFunny.ReadOnly = true;
+            this.richTextFunny.Size = new System.Drawing.Size(249, 93);
+            this.richTextFunny.TabIndex = 26;
+            this.richTextFunny.Text = "";
+            // 
             // Calculator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(20)))), ((int)(((byte)(44)))));
             this.ClientSize = new System.Drawing.Size(639, 612);
+            this.Controls.Add(this.richTextFunny);
             this.Controls.Add(this.richTextHistory);
             this.Controls.Add(this.buttonEquals);
             this.Controls.Add(this.buttonSubtract);
@@ -559,6 +574,7 @@
         private System.Windows.Forms.Button buttonSubtract;
         private System.Windows.Forms.Button buttonAdd;
         private System.Windows.Forms.RichTextBox richTextHistory;
+        private System.Windows.Forms.RichTextBox richTextFunny;
     }
 }
 

@@ -45,6 +45,7 @@ namespace CalculatorAPP
         private Rectangle btnEquals;
 
         private Rectangle rtbHistory;
+        private Rectangle rtbFunny;
 
         private Size originalFormSize;
 
@@ -89,6 +90,7 @@ namespace CalculatorAPP
             btnEquals = new Rectangle(buttonEquals.Location.X, buttonEquals.Location.Y, buttonEquals.Width, buttonEquals.Height);
 
             rtbHistory = new Rectangle(richTextHistory.Location.X, richTextHistory.Location.Y, richTextHistory.Width, richTextHistory.Height);
+            rtbFunny = new Rectangle(richTextFunny.Location.X, richTextFunny.Location.Y, richTextFunny.Width, richTextFunny.Height);
 
             boxForInput = new Rectangle(inputBox.Location.X, inputBox.Location.Y, inputBox.Width, inputBox.Height);
             labelForPreviousInput = new Rectangle(lblPreviousInput.Location.X, lblPreviousInput.Location.Y, lblPreviousInput.Width, lblPreviousInput.Height);
@@ -149,6 +151,7 @@ namespace CalculatorAPP
             resizeControl(btnEquals, buttonEquals);
 
             resizeControl(rtbHistory, richTextHistory);
+            resizeControl(rtbFunny, richTextFunny);
 
             resizeControl(boxForInput, inputBox);
             resizeControl(labelForPreviousInput, lblPreviousInput);
@@ -216,6 +219,7 @@ namespace CalculatorAPP
                 operation = button.Text;
                 lblPreviousInput.Text = result + " " + operation;
                 isOperationPerformed = true;
+               
             
              }          
                       
@@ -224,6 +228,7 @@ namespace CalculatorAPP
                 result = double.Parse(inputBox.Text);
                 lblPreviousInput.Text = result + " " + operation;
                 isOperationPerformed = true;
+                
 
             }
 
@@ -258,6 +263,7 @@ namespace CalculatorAPP
             num1 = 0;
             result = 0;
             richTextHistory.Clear();
+            richTextFunny.Clear();  
         }
 
       
@@ -272,29 +278,34 @@ namespace CalculatorAPP
         
             secondNumber = inputBox.Text;
 
-            
+            if(richTextFunny != null)
+            {
+                richTextFunny.Clear();
+            }
 
             switch (operation)
             { 
                 case "+":
                     inputBox.Text = (result + double.Parse(inputBox.Text)).ToString();
+                    Funny();
                     break;
                 case "-":
                     inputBox.Text = (result - double.Parse(inputBox.Text)).ToString();
-                   
-                  
+                    Funny();
+
                     break;
                 case "*":
                     inputBox.Text = (result * double.Parse(inputBox.Text)).ToString();
-                   
-                   
+                    Funny();
+
                     break;
                 case "÷":
                     inputBox.Text = (result / double.Parse(inputBox.Text)).ToString();
-                 
+                    Funny();
                     break;
                 case "%":
-                    inputBox.Text = (result / double.Parse(inputBox.Text) * 100).ToString(); 
+                    inputBox.Text = (result / double.Parse(inputBox.Text) * 100).ToString();
+                    Funny();
                     break;
                
                 default:
@@ -338,7 +349,36 @@ namespace CalculatorAPP
 
 
         }
-    }
-           
+
+        private void Funny()
+        {   
+             Random rnd = new Random(); 
+             int rand = rnd.Next(0, 5);
+
+            switch(rand)
+            {
+                 case 0:
+                    richTextFunny.Text = "I bet you still count using your fingers!";
+                   break;
+
+                case 1:
+                    richTextFunny.Text = "Can I plug my solution into your equation?";
+                    break;
+                case 2:
+                    richTextFunny.Text = "I heard you like math, so what's the sum of U+Me";
+                    break;
+                case 3:
+                    richTextFunny.Text = "Your sex life is like √-1";
+                    break;
+                case 4:
+                    richTextFunny.Text = "With my special programme, priced at $100,000,000, you can become averagely intelligent!";
+                    break;
+                case 5:
+                    richTextFunny.Text = "You are one well-defined function.";
+                    break;
+            }
+
+        }
+    }       
 
 }
