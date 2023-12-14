@@ -34,7 +34,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBoxConfirmPassword = new System.Windows.Forms.TextBox();
+            this.textUserEmail = new System.Windows.Forms.TextBox();
             this.checkShowPassword = new System.Windows.Forms.CheckBox();
             this.buttonRegister = new System.Windows.Forms.Button();
             this.buttonClear = new System.Windows.Forms.Button();
@@ -106,15 +106,15 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "Email";
             // 
-            // textBoxConfirmPassword
+            // textUserEmail
             // 
-            this.textBoxConfirmPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.textBoxConfirmPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxConfirmPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxConfirmPassword.Location = new System.Drawing.Point(45, 340);
-            this.textBoxConfirmPassword.Name = "textBoxConfirmPassword";
-            this.textBoxConfirmPassword.Size = new System.Drawing.Size(275, 29);
-            this.textBoxConfirmPassword.TabIndex = 5;
+            this.textUserEmail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            this.textUserEmail.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textUserEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textUserEmail.Location = new System.Drawing.Point(45, 340);
+            this.textUserEmail.Name = "textUserEmail";
+            this.textUserEmail.Size = new System.Drawing.Size(275, 29);
+            this.textUserEmail.TabIndex = 5;
             // 
             // checkShowPassword
             // 
@@ -140,6 +140,7 @@
             this.buttonRegister.TabIndex = 8;
             this.buttonRegister.Text = "Register";
             this.buttonRegister.UseVisualStyleBackColor = false;
+            this.buttonRegister.Click += new System.EventHandler(this.buttonRegister_Click);
             // 
             // buttonClear
             // 
@@ -177,6 +178,7 @@
             this.label5.Size = new System.Drawing.Size(117, 17);
             this.label5.TabIndex = 11;
             this.label5.Text = "Back to LOGIN";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // FormRegister
             // 
@@ -190,7 +192,7 @@
             this.Controls.Add(this.buttonRegister);
             this.Controls.Add(this.checkShowPassword);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBoxConfirmPassword);
+            this.Controls.Add(this.textUserEmail);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.labelUserName);
@@ -214,7 +216,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBoxConfirmPassword;
+        private System.Windows.Forms.TextBox textUserEmail;
         private System.Windows.Forms.CheckBox checkShowPassword;
         private System.Windows.Forms.Button buttonRegister;
         private System.Windows.Forms.Button buttonClear;

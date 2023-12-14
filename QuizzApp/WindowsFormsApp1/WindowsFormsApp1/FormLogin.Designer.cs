@@ -93,6 +93,7 @@
             this.labelRegister.Size = new System.Drawing.Size(121, 17);
             this.labelRegister.TabIndex = 23;
             this.labelRegister.Text = "Create account";
+            this.labelRegister.Click += new System.EventHandler(this.labelRegister_Click);
             // 
             // label1
             // 

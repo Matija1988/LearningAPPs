@@ -35,7 +35,9 @@ namespace WindowsFormsApp1
 
             if (rdr.HasRows) 
             {
-                MessageBox.Show("Loggin Successful");    
+                Hide();
+                QuizQuestions formQuiz = new QuizQuestions();
+                formQuiz.Show();    
             
             } 
             else 
@@ -44,6 +46,13 @@ namespace WindowsFormsApp1
             }
 
             conn.Close();
+        }
+
+        private void labelRegister_Click(object sender, EventArgs e)
+        {
+            Hide();
+            FormRegister registerForm = new FormRegister(); 
+            registerForm.Show();    
         }
     }
 }

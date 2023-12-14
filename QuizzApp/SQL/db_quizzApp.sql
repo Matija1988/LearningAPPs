@@ -60,6 +60,10 @@ insert into highscores (userID, answer) values (1,1),(1,3);
 
 select * from users; 
 
+select * from questions;
+
+select description from questions; 
+
 select a.username, b.answer, c.points
 from users a inner join highscores b on b.userID = a.id
 inner join answers c on b.answer = c.id
