@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.Design;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
@@ -11,43 +13,93 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
+    
     public partial class QuizQuestions : Form
     {
-        SqlConnection conn = new SqlConnection
- ("Data Source=DESKTOP-2V35V55\\SQLEXPRESS;Initial Catalog=quizApp;Integrated Security=True");
+        private SqlConnection conn;
+        //       SqlCommand cmd;
+        //       SqlDataReader rdr = null;
+        //       SqlDataAdapter adapter;
 
-        SqlCommand cmd;
-        SqlDataReader rdr = null;
-        SqlDataAdapter adapter;
-
-        //void GetData()
-        //{
-        //    string query = "Select * from questions";
-        //    conn.Open();
-        //    adapter = new SqlDataAdapter(query, conn);
-        //    RichTextBox questionTextBox = new RichTextBox();
-        //    adapter.Fill(questionTextBox); 
-        //}
 
         public QuizQuestions()
         {
             InitializeComponent();
+            conn = new SqlConnection
+ ("Data Source=DESKTOP-2V35V55\\SQLEXPRESS;Initial Catalog=quizApp;Integrated Security=True");
+
+            try
+            {
+
+                conn.Open ();
+                LoadData();
+                LoadAnswers();
+            }
+            catch (Exception ex)  
+            {
+                MessageBox.Show($"Error connecting to the database: {ex.Message}", "Error");
+
+            }
+
         }
 
-        private void rtbQuestions_TextChanged(object sender, EventArgs e)
+        private void LoadData()
         {
-   
-           cmd = new SqlCommand("select description from questions", conn);
-           rdr = cmd.ExecuteReader();
-           conn.Open();
+            string query = "select description from questions";
 
-                    while (rdr.Read())
+            using(SqlCommand cmd = new SqlCommand(query, conn)) 
+            { 
+                try
+                {
+                    object result = cmd.ExecuteScalar();
+
+                    if(result != null)
                     {
-                        rtbQuestions.Text = rdr.GetValue(0).ToString();
-                        textBox1.Text = rdr.GetValue(1).ToString();
-                    }
 
-           conn.Close();
-         }
-     }
+                        rtbQuestions.Text = result.ToString();
+                        
+                    }
+                    else
+                    {
+                        rtbQuestions.Text = "No data found"; 
+                    }
+                }   catch (Exception ex) 
+                {
+                    MessageBox.Show($"Error executing query: {ex.Message}", "Error"); 
+                }
+            
+            }
+
+        }
+        
+        private void LoadAnswers ()
+        {
+            int answerID = 1;
+            string query = "select text from answers where id =" + answerID;
+
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            {
+                try
+                {
+                    object result = cmd.ExecuteScalar();
+
+                    if (result != null)
+                    {
+
+                        button1.Text = result.ToString();
+
+                    }
+                    else
+                    {
+                        rtbQuestions.Text = "No data found";
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error executing query: {ex.Message}", "Error");
+                }
+
+            }
+        }
+    }
 }

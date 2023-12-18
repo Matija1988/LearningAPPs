@@ -53,6 +53,7 @@ namespace WindowsFormsApp1
             Hide();
             FormRegister registerForm = new FormRegister(); 
             registerForm.Show();    
+
         }
     }
 }

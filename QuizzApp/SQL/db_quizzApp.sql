@@ -1,9 +1,9 @@
-use master;
-go
-drop database if exists quizApp;
-go
-create database quizApp collate croatian_ci_as;
-go
+--use master;
+--go
+--drop database if exists quizApp;
+--go
+--create database quizApp collate croatian_ci_as;
+--go
 use quizApp;
 
 create table users(
@@ -68,3 +68,5 @@ select a.username, b.answer, c.points
 from users a inner join highscores b on b.userID = a.id
 inner join answers c on b.answer = c.id
 where c.isCorrect = 1;
+
+select text from answers where id = 1; 
