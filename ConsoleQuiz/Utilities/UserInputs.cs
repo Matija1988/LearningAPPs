@@ -18,12 +18,45 @@ namespace ConsoleQuiz.Utilities
                 s = Console.ReadLine();
                 if (s.Trim().Length == 0)
                 {
-                    ErrorMessages.ErrorMessageInput();
-
+                    ErrorMessages.NoUserInput();
                     continue;
                 }
 
                 return s;
+            }
+        }
+
+        internal static int InputInt()
+        {
+            throw new NotImplementedException();
+        }
+
+        internal static int InputIntZeroAllowed(string v)
+        {
+            {
+                while (true)
+                {
+                    Console.Write(v);
+
+                    try
+                    {
+                        int a = int.Parse(Console.ReadLine());
+
+
+                        if (a <= -1)
+                        {
+                            ErrorMessages.NegativeNumbersNotAllowed(); 
+                            continue;
+
+                        }
+                        if (a >= 0) return a;
+                    }
+                    catch
+                    {
+                        ErrorMessages.ErrorMessageInput();
+                    }
+
+                }
             }
         }
     }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ConsoleQuiz.Models;
+using ConsoleQuiz.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,18 +10,139 @@ namespace ConsoleQuiz
 {
     internal class Main
     {
-        public DataInit dataInit {  get; }
+
+        public DataInit DataInit { get; }
+
+        public QuizzStart QuizzStart { get; }
+
+        public List<User> _users { get; }
         public Main()
         {
-            dataInit = new DataInit(this);
+            DataInit = new DataInit(this);
+            QuizzStart = new QuizzStart(this);
 
+            GraphicElements.StartMessage();
             LogIn();
         }
 
 
-        internal static void LogIn ()
+
+        public void LogIn()
         {
-            throw new NotImplementedException();
+            GraphicElements.PrintStars();
+            MenuText.LogIn();
+
+
+            while (true)
+            {
+                string username = EnterUsername();
+                string password = EnterPassword();
+
+                try
+                {
+
+
+                    DataInit._users.ForEach(user =>
+                    {
+
+                        if (user.Username == username && user.userPassword == password)
+                        {
+                            Console.WriteLine("Welcome " + user.Username);
+
+                            MainMenu();
+
+                        }
+                        else
+                        {
+                            ErrorMessages.ErrorMessageInput();
+                        }
+                    });
+
+                }
+                catch
+                {
+                    ErrorMessages.ErrorMessageInput();
+                    LogIn();
+                }
+            }
         }
+
+        private void MainMenu()
+        {
+            MenuText.MainMenuText();
+
+            MainMenuSwitch();
+
+        }
+
+        private void MainMenuSwitch()
+        {
+            switch (UserInputs.InputIntZeroAllowed("Enter menu option: "))
+            {
+                case 1:
+                     
+                    break;
+                case 2:
+                    break;
+                case 0:
+                    Environment.Exit(0);
+                    break;
+                default:
+                    ErrorMessages.ErrorMessageInput();
+                    break;
+            }
+        }
+
+        private string EnterPassword()
+        {
+            string password = UserInputs.InputString("Password: ");
+
+            char[] checker = password.ToCharArray();
+
+
+            if (checker.Length == 0)
+            {
+                ErrorMessages.NoUserInput();
+                EnterPassword();
+            }
+
+            if (!checker.Contains('[') || !checker.Contains('=') || !checker.Contains('(') || !checker.Contains(';'))
+            {
+                password = new string(checker);
+
+
+            }
+            else
+            {
+                ErrorMessages.InputContainsUnwantedCharacters();
+                EnterPassword();
+            }
+
+            return password;
+        }
+
+        private static string EnterUsername()
+        {
+            string username = UserInputs.InputString("Username: ");
+
+            char[] checker = username.ToCharArray();
+
+
+            if (!checker.Contains('[') || !checker.Contains('=') || !checker.Contains('(') || !checker.Contains(';'))
+            {
+                username = new string(checker);
+
+
+            }
+            else
+            {
+                ErrorMessages.InputContainsUnwantedCharacters();
+                EnterUsername();
+            }
+
+            return username;
+        }
+
+
     }
 }

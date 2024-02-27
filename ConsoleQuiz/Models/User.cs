@@ -13,5 +13,10 @@ namespace ConsoleQuiz.Models
 
         public string Email { get; set; }
 
+        public override string ToString()
+        {
+            return Username;
+        }
+
     }
 }

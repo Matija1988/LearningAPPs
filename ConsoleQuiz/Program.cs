@@ -2,4 +2,5 @@
 
 using ConsoleQuiz;
 
-Main.LogIn();
+
+new Main();

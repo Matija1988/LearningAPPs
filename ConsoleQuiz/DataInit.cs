@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 namespace ConsoleQuiz
 {
 
-    internal class DataInit ()
+    internal  class DataInit ()
     {
         private Main Main { get; }
 
-        public List<User> Users { get; set; }
+        public List<User> _users { get; set; }
 
         public List<Question> Questions {  get; set; }  
         
@@ -24,7 +24,7 @@ namespace ConsoleQuiz
         {
             this.Main = Main;
 
-            Users = new List<User> ();
+            _users = new List<User> ();
             Questions = new List<Question> ();
             Answers = new List<Answer> ();
 
@@ -32,13 +32,13 @@ namespace ConsoleQuiz
             FillQuestionsList ();
             FillAnswersList ();
         }
-
+                    
         private void FillUsersList()
         {
-            Users.Add(new User()
+            _users.Add(new User()
             {
-                Username = "test",
-                userPassword = "Test123",
+                Username = "Matija",
+                userPassword = "test",
                 Email = "matijapavkovic74@gmail.com"
 
             });
