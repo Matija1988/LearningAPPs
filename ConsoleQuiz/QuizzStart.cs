@@ -27,27 +27,31 @@ namespace ConsoleQuiz
 
         public void LoadQuestion()
         {
-
+            int score = 0;
           
             for(int i = 0; i < Main.DataInit.Questions.Count; i++) { 
 
             var question = Main.DataInit.Questions[i];
-                           
+                        
+                
 
             Console.WriteLine(question.ToString());
 
-            LoadAnswers(question);
-                           
+                int highscore =+ LoadAnswers(question, score);
+                                 
+                score = highscore;  
+
+                Console.WriteLine("Your score is " + highscore);
+
             }
 
         }
 
-        private int LoadAnswers(Question question)
+        private int LoadAnswers(Question question, int score)
         {
             bool isAnswered = false;
             int counter = 1;
-
-            int highscore = 0;
+                      
 
             List<Answer> answerList = new List<Answer>();
 
@@ -70,7 +74,7 @@ namespace ConsoleQuiz
                     if (answerList.ElementAt(0).IsCorrect)
                     {
                         Console.WriteLine("Your answer is " + answerList.ElementAt(0).IsCorrect);
-                        highscore += answerList.ElementAt(0).Points;
+                        score += answerList.ElementAt(0).Points;
                     }
                     else
                     {
@@ -82,7 +86,7 @@ namespace ConsoleQuiz
                     if (answerList.ElementAt(1).IsCorrect)
                     {
                         Console.WriteLine("Your answer is " + answerList.ElementAt(1).IsCorrect);
-                        highscore += answerList.ElementAt(1).Points;
+                        score += answerList.ElementAt(1).Points;
                     }
                     else
                     {
@@ -94,7 +98,7 @@ namespace ConsoleQuiz
                     if (answerList.ElementAt(2).IsCorrect)
                     {
                         Console.WriteLine("Your answer is " + answerList.ElementAt(2).IsCorrect);
-                        highscore += answerList.ElementAt(2).Points;
+                        score += answerList.ElementAt(2).Points;
                     }
                     else
                     {
@@ -105,7 +109,7 @@ namespace ConsoleQuiz
                     if (answerList.ElementAt(3).IsCorrect)
                     {
                         Console.WriteLine("Your answer is " + answerList.ElementAt(3).IsCorrect);
-                        highscore += answerList.ElementAt(3).Points;
+                        score += answerList.ElementAt(3).Points;
                     }
                     else
                     {
@@ -117,9 +121,9 @@ namespace ConsoleQuiz
                     break;
             }
 
-            Console.WriteLine("Your highscore is " + highscore);
+           
 
-            return highscore;
+            return score;
 
         }
     }

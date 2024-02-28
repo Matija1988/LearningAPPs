@@ -59,6 +59,12 @@ namespace ConsoleQuiz
                 id = UserInputs.AutoIncrementID(Questions),
                 Description = "Complete the statement: \r\n\t\t\tAn if statement is a selection statement that allows more than one",
             });
+
+            Questions.Add(new Question()
+            {
+                id = UserInputs.AutoIncrementID(Questions),
+                Description = "Fill in the blank: \r\n\t\t\t_______ is the capital city of Spain.",
+            });
         }
 
         private void FillAnswersList ()
@@ -135,7 +141,43 @@ namespace ConsoleQuiz
                 Points = 0,
                 QuestionID = 2,
             });
-            
+
+            Answers.Add(new Answer()
+            {
+                id = UserInputs.AutoIncrementID(Answers),
+                Text = "Sevila",
+                IsCorrect = false,
+                Points = 0,
+                QuestionID = 3,
+            });
+
+            Answers.Add(new Answer()
+            {
+                id = UserInputs.AutoIncrementID(Answers),
+                Text = "Valencia",
+                IsCorrect = false,
+                Points = 0,
+                QuestionID = 3,
+            });
+
+            Answers.Add(new Answer()
+            {
+                id = UserInputs.AutoIncrementID(Answers),
+                Text = "Barcelona",
+                IsCorrect = false,
+                Points = 0,
+                QuestionID = 3,
+            });
+
+            Answers.Add(new Answer()
+            {
+                id = UserInputs.AutoIncrementID(Answers),
+                Text = "Madrid",
+                IsCorrect = true,
+                Points = 10,
+                QuestionID = 3,
+            });
+
         }
     }
 }
