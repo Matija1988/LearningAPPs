@@ -9,5 +9,10 @@ namespace ConsoleQuiz.Models
     internal class Question : Entity
     {
         public string Description { get; set; }
+
+        public override string ToString ()
+        {
+            return "Question number " + (id + 1) + ") " + Description;
+        }
     }
 }

@@ -21,11 +21,11 @@ namespace ConsoleQuiz.Utilities
 
         }
 
-        public static void StartMessage()
+        public static void StartMessage ()
         {
             Console.BackgroundColor = ConsoleColor.DarkBlue;
             Console.ForegroundColor = ConsoleColor.Yellow;
-              
+
             Console.WriteLine("                                                              ________          ");
             Console.WriteLine("       .d88888b.           d8b                               |[]    []|         ");
             Console.WriteLine("      d88P\" \"Y88b          Y8P                               |[]    []|         ");
@@ -38,7 +38,7 @@ namespace ConsoleQuiz.Utilities
             Console.WriteLine("               Y8b                                           TTTTTTTTTT         ");
 
 
-            Console.ResetColor();   
+            Console.ResetColor();
         }
     }
 }

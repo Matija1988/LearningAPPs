@@ -14,5 +14,10 @@ namespace ConsoleQuiz.Models
         public int Points { get; set; }
 
         public int QuestionID { get; set; }
+
+        public override string ToString ()
+        {
+            return Text;
+        }
     }
 }

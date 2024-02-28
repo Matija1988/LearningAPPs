@@ -80,7 +80,8 @@ namespace ConsoleQuiz
             switch (UserInputs.InputIntZeroAllowed("Enter menu option: "))
             {
                 case 1:
-                     
+                    Console.WriteLine("Entering quizz");
+                    QuizzStart.LoadQuestion();
                     break;
                 case 2:
                     break;
