@@ -3,6 +3,7 @@ using ConsoleQuiz.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,7 +11,7 @@ namespace ConsoleQuiz
 {
     internal class QuizzStart
     {
-        private Main Main {  get; }
+        private Main Main { get; }
 
         private DataInit DataInit { get; }
 
@@ -19,79 +20,108 @@ namespace ConsoleQuiz
             this.Main = Main;
         }
 
-        public QuizzStart() 
-        { 
-        
+        public QuizzStart()
+        {
+
         }
 
         public void LoadQuestion()
         {
 
-            int questionIndex = 0;
-            
+          
+            for(int i = 0; i < Main.DataInit.Questions.Count; i++) { 
 
-            var question = Main.DataInit.Questions[questionIndex];
-
+            var question = Main.DataInit.Questions[i];
+                           
 
             Console.WriteLine(question.ToString());
 
-            LoadAnswers();
-          
+            LoadAnswers(question);
+                           
+            }
 
         }
 
-        private void LoadAnswers ()
+        private int LoadAnswers(Question question)
         {
-            bool IsAnswered = false;
+            bool isAnswered = false;
+            int counter = 1;
 
-            int answer1 = 0;
-            int answer2 = 1;
-            int answer3 = 2;
-            int answer4 = 3;    
+            int highscore = 0;
 
+            List<Answer> answerList = new List<Answer>();
 
-            var answerText = Main.DataInit.Answers[answer1];
-            var answerText1 = Main.DataInit.Answers[answer2];
-            var answerText2 = Main.DataInit.Answers[answer3];
-            var answerText3 = Main.DataInit.Answers[answer4];
+            Main.DataInit.Answers.ForEach(a =>
+            {
+                if (a.QuestionID == question.id)
+                {
+                    answerList.Add(a);
+                }
+            });
 
-            Console.WriteLine("1) " + answerText);
-            Console.WriteLine("2) " + answerText1);
-            Console.WriteLine("3) " + answerText2);
-            Console.WriteLine("4) " + answerText3);
+            for (int i = 0; i < answerList.Count; i++)
+            {
+                Console.WriteLine(counter++ + ") " + answerList[i]);
+            }
 
-
-            switch (UserInputs.InputIntZeroAllowed("Enter your answer: "))
+            switch (UserInputs.InputInt("Enter your answer: "))
             {
                 case 1:
-                    if(answerText.IsCorrect)
+                    if (answerList.ElementAt(0).IsCorrect)
                     {
-                        IsAnswered = answerText.IsCorrect;
-                        Console.WriteLine("Your answer is " + IsAnswered);
+                        Console.WriteLine("Your answer is " + answerList.ElementAt(0).IsCorrect);
+                        highscore += answerList.ElementAt(0).Points;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Your answer is " + answerList.ElementAt(0).IsCorrect);
                     }
                     break;
+
                 case 2:
-                    if (answerText.IsCorrect)
+                    if (answerList.ElementAt(1).IsCorrect)
                     {
-                        IsAnswered = answerText1.IsCorrect;
-                        Console.WriteLine("Your answer is " + IsAnswered);
+                        Console.WriteLine("Your answer is " + answerList.ElementAt(1).IsCorrect);
+                        highscore += answerList.ElementAt(1).Points;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Your answer is " + answerList.ElementAt(1).IsCorrect);
+                      
                     }
                     break;
                 case 3:
-                    if (answerText.IsCorrect)
+                    if (answerList.ElementAt(2).IsCorrect)
                     {
-                        IsAnswered = answerText2.IsCorrect;
-                        Console.WriteLine("Your answer is " + IsAnswered);
+                        Console.WriteLine("Your answer is " + answerList.ElementAt(2).IsCorrect);
+                        highscore += answerList.ElementAt(2).Points;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Your answer is " + answerList.ElementAt(2).IsCorrect);
                     }
                     break;
                 case 4:
-                    if (answerText.IsCorrect)
+                    if (answerList.ElementAt(3).IsCorrect)
                     {
-                        IsAnswered = answerText3.IsCorrect;
-                        Console.WriteLine("Your answer is " + IsAnswered);
+                        Console.WriteLine("Your answer is " + answerList.ElementAt(3).IsCorrect);
+                        highscore += answerList.ElementAt(3).Points;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Your answer is " + answerList.ElementAt(3).IsCorrect);
                     }
                     break;
+                default:
+                    ErrorMessages.ErrorMessageInput();
+                    break;
             }
+
+            Console.WriteLine("Your highscore is " + highscore);
+
+            return highscore;
+
         }
     }
+
 }

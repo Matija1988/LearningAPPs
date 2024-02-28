@@ -28,6 +28,14 @@ namespace ConsoleQuiz.Utilities
             Console.WriteLine("0) Exit");
         }
 
+        internal static void NextOrExit()
+        {
+            GraphicElements.PrintStars();
+            Console.WriteLine("\n");
+            Console.WriteLine("1) Next question");
+            Console.WriteLine("0) Quit");
+        }
+
         internal static void PrintMenubar(string menubar) 
         {
             menubar.ToCharArray();

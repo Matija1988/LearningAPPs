@@ -12,7 +12,7 @@ namespace ConsoleQuiz.Models
 
         public override string ToString ()
         {
-            return "Question number " + (id + 1) + ") " + Description;
+            return "Question number " + id + ") " + Description;
         }
     }
 }

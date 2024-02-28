@@ -1,4 +1,5 @@
 ﻿using ConsoleQuiz.Models;
+using ConsoleQuiz.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,23 +37,26 @@ namespace ConsoleQuiz
         private void FillUsersList()
         {
             _users.Add(new User()
-            {
+            { 
+                id = UserInputs.AutoIncrementID(_users),
                 Username = "Matija",
                 userPassword = "test",
                 Email = "matijapavkovic74@gmail.com"
 
-            });
+            }) ;
         }
 
         private void FillQuestionsList()
         {
             Questions.Add(new Question()
             {
+                id = UserInputs.AutoIncrementID(Questions),
                 Description = "What is the name of the most decorated warship in naval history?",
             });
 
             Questions.Add(new Question()
             {
+                id = UserInputs.AutoIncrementID(Questions),
                 Description = "Complete the statement: \r\n\t\t\tAn if statement is a selection statement that allows more than one",
             });
         }
@@ -61,6 +65,7 @@ namespace ConsoleQuiz
         {
             Answers.Add(new Answer()
             {
+                id = UserInputs.AutoIncrementID(Answers),
                 Text = "HMS Warspite",
                 IsCorrect = true,
                 Points = 10,
@@ -69,6 +74,7 @@ namespace ConsoleQuiz
 
             Answers.Add(new Answer()
             {
+                id = UserInputs.AutoIncrementID(Answers),
                 Text = "USS Colorado",
                 IsCorrect = false,
                 Points = 0,
@@ -77,6 +83,7 @@ namespace ConsoleQuiz
 
             Answers.Add(new Answer()
             {
+                id = UserInputs.AutoIncrementID(Answers),
                 Text = "KM Scharnhorst",
                 IsCorrect = false,
                 Points = 0,
@@ -85,11 +92,50 @@ namespace ConsoleQuiz
 
             Answers.Add(new Answer()
             {
+                id = UserInputs.AutoIncrementID(Answers),
                 Text = "HMS Victory",
                 IsCorrect = false,
                 Points = 0,
                 QuestionID = 1,
             });
+
+            Answers.Add(new Answer()
+            {
+                id = UserInputs.AutoIncrementID(Answers),
+                Text = "operation",
+                IsCorrect = false,
+                Points = 0,
+                QuestionID = 2,
+
+            });
+
+            Answers.Add(new Answer()
+            {
+                id = UserInputs.AutoIncrementID(Answers),
+                Text = "possible flow of control",
+                IsCorrect = true,
+                Points = 10,
+                QuestionID = 2,
+            });
+
+            Answers.Add(new Answer()
+            {
+                id = UserInputs.AutoIncrementID(Answers),
+                Text = "method call",
+                IsCorrect = false,
+                Points = 0,
+                QuestionID = 2,
+            });
+
+            Answers.Add(new Answer() 
+            {
+                id = UserInputs.AutoIncrementID(Answers),
+                Text = "insanity plea",
+                IsCorrect = false,  
+                Points = 0,
+                QuestionID = 2,
+            });
+            
         }
     }
 }

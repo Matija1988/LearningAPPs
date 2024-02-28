@@ -26,9 +26,26 @@ namespace ConsoleQuiz.Utilities
             }
         }
 
-        internal static int InputInt()
+        internal static int InputInt(string v)
         {
-            throw new NotImplementedException();
+            {
+                while (true)
+                {
+                    Console.Write(v);
+
+                    try
+                    {
+                        int a = int.Parse(Console.ReadLine());
+                                                                      
+                        if (a >= 0) return a;
+                    }
+                    catch
+                    {
+                        ErrorMessages.ErrorMessageInput();
+                    }
+
+                }
+            }
         }
 
         internal static int InputIntZeroAllowed(string v)
@@ -58,6 +75,15 @@ namespace ConsoleQuiz.Utilities
 
                 }
             }
+        }
+
+        public static int AutoIncrementID<T>(List<T> myList)
+
+        {
+            int arraySize = myList.Count();
+            int newArraySize = arraySize + 1;
+
+            return newArraySize;
         }
     }
      
