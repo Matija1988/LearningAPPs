@@ -45,6 +45,8 @@ namespace ConsoleQuiz
 
             }
 
+            Main.MainMenu();
+
         }
 
         private int LoadAnswers(Question question, int score)

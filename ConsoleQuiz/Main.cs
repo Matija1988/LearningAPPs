@@ -67,7 +67,7 @@ namespace ConsoleQuiz
             }
         }
 
-        private void MainMenu()
+        public void MainMenu()
         {
             MenuText.MainMenuText();
 

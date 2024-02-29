@@ -65,6 +65,12 @@ namespace ConsoleQuiz
                 id = UserInputs.AutoIncrementID(Questions),
                 Description = "Fill in the blank: \r\n\t\t\t_______ is the capital city of Spain.",
             });
+
+            Questions.Add(new Question()
+            {
+                id = UserInputs.AutoIncrementID(Questions),
+                Description = "C# is a ",
+            });
         }
 
         private void FillAnswersList ()
@@ -176,6 +182,42 @@ namespace ConsoleQuiz
                 IsCorrect = true,
                 Points = 10,
                 QuestionID = 3,
+            });
+
+            Answers.Add(new Answer()
+            {
+                id = UserInputs.AutoIncrementID(Answers),
+                Text = "Dynamically typed programing language",
+                IsCorrect = false,
+                Points = 0,
+                QuestionID = 4,
+            });
+
+            Answers.Add(new Answer()
+            {
+                id = UserInputs.AutoIncrementID(Answers),
+                Text = "Statically typed programing language",
+                IsCorrect = true,
+                Points = 10,
+                QuestionID = 4,
+            });
+
+            Answers.Add(new Answer()
+            {
+                id = UserInputs.AutoIncrementID(Answers),
+                Text = "not sharp enough programing language",
+                IsCorrect = false,
+                Points = 0,
+                QuestionID = 4,
+            });
+
+            Answers.Add(new Answer()
+            {
+                id = UserInputs.AutoIncrementID(Answers),
+                Text = "progressive programing language",
+                IsCorrect = true,
+                Points = 10,
+                QuestionID = 4,
             });
 
         }
