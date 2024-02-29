@@ -25,6 +25,8 @@ namespace ConsoleQuiz.Utilities
 
             Console.WriteLine("1) Play");
             Console.WriteLine("2) Highscores");
+            Console.WriteLine("3) Test option - Write questions to xml");
+            Console.WriteLine("4) Test option - Read questions from xml");
             Console.WriteLine("0) Exit");
         }
 

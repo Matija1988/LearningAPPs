@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleQuiz.Models
 {
-    internal abstract class Entity
+    public abstract class Entity
     {
         public int id { get; set; }
     }

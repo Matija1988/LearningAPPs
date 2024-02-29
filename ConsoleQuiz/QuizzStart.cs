@@ -32,16 +32,18 @@ namespace ConsoleQuiz
             for(int i = 0; i < Main.DataInit.Questions.Count; i++) { 
 
             var question = Main.DataInit.Questions[i];
-                        
-                
 
-            Console.WriteLine(question.ToString());
 
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine(question.ToString());
+                Console.ResetColor();
                 int highscore =+ LoadAnswers(question, score);
                                  
                 score = highscore;  
 
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("Your score is " + highscore);
+                Console.ResetColor();
 
             }
 

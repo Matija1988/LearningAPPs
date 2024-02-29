@@ -15,11 +15,17 @@ namespace ConsoleQuiz
 
         public QuizzStart QuizzStart { get; }
 
+        public XMLOutput XMLOutput { get; }
+
+        public XMLRead XMLRead { get; }
+
         public List<User> _users { get; }
         public Main()
         {
             DataInit = new DataInit(this);
             QuizzStart = new QuizzStart(this);
+            XMLOutput = new XMLOutput(this);
+            XMLRead = new XMLRead(this);
 
             GraphicElements.StartMessage();
             LogIn();
@@ -84,6 +90,12 @@ namespace ConsoleQuiz
                     QuizzStart.LoadQuestion();
                     break;
                 case 2:
+                    break;
+                case 3:
+                    XMLOutput.WriteToDocument();
+                    break;
+                case 4:
+                    XMLRead.ReadXML();
                     break;
                 case 0:
                     Environment.Exit(0);
